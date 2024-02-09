@@ -20,6 +20,7 @@
 		813836212B36528500B50FAF /* TodosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813836202B36528500B50FAF /* TodosCell.swift */; };
 		813836232B36557300B50FAF /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813836222B36557300B50FAF /* Todo.swift */; };
 		813836252B36664500B50FAF /* TodoDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813836242B36664500B50FAF /* TodoDetailsVC.swift */; };
+		8190747C2B764F020017D658 /* TodoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8190747B2B764F020017D658 /* TodoStorage.swift */; };
 		819DB2EF2B468A4100CE69D9 /* NewTodoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819DB2EE2B468A4100CE69D9 /* NewTodoVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		813836202B36528500B50FAF /* TodosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosCell.swift; sourceTree = "<group>"; };
 		813836222B36557300B50FAF /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		813836242B36664500B50FAF /* TodoDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsVC.swift; sourceTree = "<group>"; };
+		8190747B2B764F020017D658 /* TodoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStorage.swift; sourceTree = "<group>"; };
 		819DB2EE2B468A4100CE69D9 /* NewTodoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,18 +111,15 @@
 		813835ED2B35FB4E00B50FAF /* First Project (To do list) */ = {
 			isa = PBXGroup;
 			children = (
+				8190747A2B764ED00017D658 /* Storage */,
+				819074792B764E910017D658 /* Models */,
+				819074782B764E730017D658 /* Views */,
+				819074772B764E300017D658 /* ViewControllers */,
 				813835EE2B35FB4E00B50FAF /* AppDelegate.swift */,
 				813835F02B35FB4E00B50FAF /* SceneDelegate.swift */,
-				813835F42B35FB4E00B50FAF /* Main.storyboard */,
 				813835F72B35FB5100B50FAF /* Assets.xcassets */,
 				813835F92B35FB5100B50FAF /* LaunchScreen.storyboard */,
 				813835FC2B35FB5100B50FAF /* Info.plist */,
-				8138361E2B35FE2A00B50FAF /* TodosVC.swift */,
-				813836202B36528500B50FAF /* TodosCell.swift */,
-				813836222B36557300B50FAF /* Todo.swift */,
-				813836242B36664500B50FAF /* TodoDetailsVC.swift */,
-				819DB2EE2B468A4100CE69D9 /* NewTodoVC.swift */,
-				811E694F2B4CE36300E22EAC /* TodosModel.xcdatamodeld */,
 			);
 			path = "First Project (To do list)";
 			sourceTree = "<group>";
@@ -140,6 +139,42 @@
 				813836112B35FB5200B50FAF /* First_Project__To_do_list_UITestsLaunchTests.swift */,
 			);
 			path = "First Project (To do list)UITests";
+			sourceTree = "<group>";
+		};
+		819074772B764E300017D658 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				819DB2EE2B468A4100CE69D9 /* NewTodoVC.swift */,
+				813836242B36664500B50FAF /* TodoDetailsVC.swift */,
+				8138361E2B35FE2A00B50FAF /* TodosVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		819074782B764E730017D658 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				813835F42B35FB4E00B50FAF /* Main.storyboard */,
+				813836202B36528500B50FAF /* TodosCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		819074792B764E910017D658 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				813836222B36557300B50FAF /* Todo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8190747A2B764ED00017D658 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				811E694F2B4CE36300E22EAC /* TodosModel.xcdatamodeld */,
+				8190747B2B764F020017D658 /* TodoStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +311,7 @@
 				813835EF2B35FB4E00B50FAF /* AppDelegate.swift in Sources */,
 				811E69512B4CE36300E22EAC /* TodosModel.xcdatamodeld in Sources */,
 				819DB2EF2B468A4100CE69D9 /* NewTodoVC.swift in Sources */,
+				8190747C2B764F020017D658 /* TodoStorage.swift in Sources */,
 				813836252B36664500B50FAF /* TodoDetailsVC.swift in Sources */,
 				8138361F2B35FE2A00B50FAF /* TodosVC.swift in Sources */,
 				813835F12B35FB4E00B50FAF /* SceneDelegate.swift in Sources */,
