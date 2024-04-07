@@ -387,7 +387,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
+        <image name="list.bullet.rectangle" catalog="system" width="32" height="32"/>
         <image name="plus.square.on.square" catalog="system" width="128" height="116"/>
         <image name="seven" width="275" height="183"/>
         <systemColor name="labelColor">

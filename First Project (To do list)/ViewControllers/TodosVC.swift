@@ -15,8 +15,8 @@ class TodosVC: UIViewController {
     @IBOutlet weak var todosTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.todosArray = TodoStorage.getTodos()
         
+        self.todosArray = TodoStorage.getTodos()
         // New Todo Notification
         NotificationCenter.default.addObserver(self, selector: #selector(NewTodoAdded), name: NSNotification.Name("NewTodoAdded"), object: nil)
         
@@ -74,7 +74,7 @@ extension TodosVC: UITableViewDataSource, UITableViewDelegate {
             cell.todoImageView.image = UIImage(named: "five")
             
         }
-        cell.todoCreationDateLable.text = todosArray[indexPath.row].date
+        cell.todoCreationDateLable.text = "\(todosArray[indexPath.row].date)"
         cell.todoImageView.layer.cornerRadius = cell.todoImageView.frame.width / 2
         
         return cell

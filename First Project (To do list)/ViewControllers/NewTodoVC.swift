@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class NewTodoVC: UIViewController {
 
     var iscreationScreen = true
@@ -29,6 +28,7 @@ class NewTodoVC: UIViewController {
                 titleTextField.text = todo.title
                 detailsTextView.text = todo.details
                 todoImageView.image = todo.image
+                
             }
         }
 
@@ -53,7 +53,11 @@ class NewTodoVC: UIViewController {
             let alert = UIAlertController(title: "اضافة مهمة جديدة", message: "سيتم اضافة مهمة جديدة", preferredStyle: UIAlertController.Style.alert)
 
             alert.addAction(UIAlertAction(title: "اضافة المهمة", style: UIAlertAction.Style.destructive, handler: { action in
-                let todo = Todo(title: self.titleTextField.text!,image: self.todoImageView.image, details: self.detailsTextView.text, date: "4/1/2024")
+                let date = NSDate()
+                var dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+                var dateString = dateFormatter.string(from: date as Date)
+                let todo = Todo(title: self.titleTextField.text!,image: self.todoImageView.image, details: self.detailsTextView.text, date: "\(dateString)")
                 NotificationCenter.default.post(name: NSNotification.Name("NewTodoAdded"), object: nil, userInfo: ["AddedTodo":todo]);
                 
                 self.tabBarController?.selectedIndex = 0
@@ -70,7 +74,11 @@ class NewTodoVC: UIViewController {
             //editing button needs to be ubdated
             let alert = UIAlertController(title: "تعديل المهمة", message: "هل انت متاكد من رغبتك في تعديل هذه المهمة؟", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "تعديل", style: .destructive,handler: { action in
-                let todo = Todo(title: self.titleTextField.text!,image: self.todoImageView.image,details: self.detailsTextView.text, date: "4/1/2024")
+                let date = NSDate()
+                var dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+                var dateString = dateFormatter.string(from: date as Date)
+                let todo = Todo(title: self.titleTextField.text!,image: self.todoImageView.image,details: self.detailsTextView.text, date: "\(dateString)")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CurrentTodoEdited") , object: nil,userInfo: ["editedTodo": todo , "editedTodoIndex": self.editedTodoIndex])
                 self.navigationController?.popViewController(animated: true)
             }))
