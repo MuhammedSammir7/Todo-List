@@ -16,7 +16,7 @@ class TodosVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.todosArray = TodoStorage.getTodos()
+        self.todosArray = TodoStorage.shared.getTodos()
         // New Todo Notification
         NotificationCenter.default.addObserver(self, selector: #selector(NewTodoAdded), name: NSNotification.Name("NewTodoAdded"), object: nil)
         
@@ -36,7 +36,7 @@ class TodosVC: UIViewController {
         if let myTodo = notification.userInfo?["AddedTodo"] as? Todo {
             todosArray.append(myTodo)
             todosTableView.reloadData()
-            TodoStorage.storeTodo(todo: myTodo)
+            TodoStorage.shared.storeTodo(todo: myTodo)
         }
     }
     @objc func currentTodoEdited(notification : Notification){
@@ -44,7 +44,7 @@ class TodosVC: UIViewController {
             if let index = notification.userInfo?["editedTodoIndex"] as? Int{
                 todosArray[index] = todo
                 todosTableView.reloadData()
-                TodoStorage.updateTodo(todo: todo, index: index)
+                TodoStorage.shared.updateTodo(todo: todo, index: index)
             }
         }
         
@@ -53,7 +53,7 @@ class TodosVC: UIViewController {
         if let index = notification.userInfo?["deletedTodoIndex"] as? Int{
             todosArray.remove(at: index)
             todosTableView.reloadData()
-            TodoStorage.deleteTodo(index: index)
+            TodoStorage.shared.deleteTodo(index: index)
         }
     }
     

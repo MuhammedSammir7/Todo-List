@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "5ED2FD63-8E5E-4336-BE89-9EED348E1A4A",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:First Project (To do list).xcodeproj",
+      "identifier" : "813835EA2B35FB4E00B50FAF",
+      "name" : "First Project (To do list)"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:First Project (To do list).xcodeproj",
+        "identifier" : "813836002B35FB5200B50FAF",
+        "name" : "First Project (To do list)Tests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:First Project (To do list).xcodeproj",
+        "identifier" : "8138360A2B35FB5200B50FAF",
+        "name" : "First Project (To do list)UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

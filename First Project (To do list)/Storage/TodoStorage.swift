@@ -3,29 +3,47 @@ import UIKit
 import CoreData
 
 class TodoStorage {
+
+    static let shared = TodoStorage()
     
-    static func storeTodo(todo: Todo){
+    private init(){}
+    
+     func storeTodo(todo: Todo){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         guard let todoEntity = NSEntityDescription.entity(forEntityName: "OneTodo", in: managedContext) else { return  }
         let todoObject = NSManagedObject.init(entity: todoEntity, insertInto: managedContext)
-        todoObject.setValue(todo.title, forKey: "title")
-        todoObject.setValue(todo.details, forKey: "details")
-        todoObject.setValue(todo.date, forKey: "date")
-        if let image = todo.image {
-            let imageData = image.jpegData(compressionQuality: 1)
-            todoObject.setValue(imageData, forKey: "image")
-        }
+         
+         var isRepeated = false
+         for oneTodo in self.getTodos() {
+             if oneTodo.title == todo.title{
+                 isRepeated = true
+                 break
+             }
+             else {
+                 isRepeated = false
+             }
+         }
+         if !isRepeated{
+             todoObject.setValue(todo.title, forKey: "title")
+             todoObject.setValue(todo.details, forKey: "details")
+             todoObject.setValue(todo.date, forKey: "date")
+             if let image = todo.image {
+                 let imageData = image.jpegData(compressionQuality: 1)
+                 todoObject.setValue(imageData, forKey: "image")
+             }
+             do {
+                 try managedContext.save()
+                 print("======== success ========")
+             }catch {
+                 print("======== error =========")
+             }
+         }
         
-        do {
-            try managedContext.save()
-            print("======== success ========")
-        }catch {
-            print("======== error =========")
-        }
+        
     }
     
-    static func updateTodo(todo: Todo, index: Int){
+     func updateTodo(todo: Todo, index: Int){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let context = appDelegate.persistentContainer.viewContext
@@ -49,7 +67,7 @@ class TodoStorage {
         }
     }
     
-    static func deleteTodo(index: Int){
+     func deleteTodo(index: Int){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "OneTodo")
@@ -64,8 +82,24 @@ class TodoStorage {
             print (error)
         }
     }
+    func deleteAllTodos(){
+       guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+       let context = appDelegate.persistentContainer.viewContext
+       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "OneTodo")
+       do {
+           let result = try context.fetch (fetchRequest) as! [NSManagedObject]
+           for todoToDelete in result {
+               context.delete(todoToDelete)
+           }
+           
+           try context.save()
+       }
+       catch{
+           print (error)
+       }
+   }
     
-    static func getTodos() -> [Todo] {
+     func getTodos() -> [Todo] {
         var todos: [Todo] = []
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return []}
